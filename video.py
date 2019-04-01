@@ -22,15 +22,11 @@ def main():
         model_cfg, model_outputs = posenet.load_model(args.model, sess)
         output_stride = model_cfg['output_stride']
 
-        if args.output_dir:
-            if not os.path.exists(args.output_dir):
-                os.makedirs(args.output_dir)
-
         video = cv2.VideoCapture(args.video)
         formatted_date = datetime.datetime.now().strftime("%Y%m%d-%H%M")
         path = '/opt/cv/result/pose-results/posenet/' + formatted_date + '-' + args.model
         i = 0
-        
+
         if not os.path.exists(path):
             os.makedirs(path)
 
