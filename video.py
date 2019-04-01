@@ -71,6 +71,8 @@ def main():
                     for ki, (s, c) in enumerate(zip(keypoint_scores[pi, :], keypoint_coords[pi, :, :])):
                         print('Keypoint %s, score = %f, coord = %s' % (posenet.PART_NAMES[ki], s, c))
 
+            i += 1
+
         print('Average FPS:', i / (time.time() - start))
 
 
