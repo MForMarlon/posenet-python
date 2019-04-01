@@ -36,7 +36,7 @@ def main():
             input_image, draw_image, output_scale = posenet.read_cap(
                 video, scale_factor=args.scale_factor, output_stride=output_stride)
 
-            if input_image is False:
+            if input_image is None:
                 break
 
             heatmaps_result, offsets_result, displacement_fwd_result, displacement_bwd_result = sess.run(
