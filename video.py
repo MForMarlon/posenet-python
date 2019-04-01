@@ -24,7 +24,7 @@ def main():
 
         video = cv2.VideoCapture(args.video)
         formatted_date = datetime.datetime.now().strftime("%Y%m%d-%H%M")
-        path = '/opt/cv/result/pose-results/posenet/' + formatted_date + '-' + args.model
+        path = '/opt/cv/result/pose-results/posenet/' + formatted_date + '-' + str(args.model)
         i = 0
 
         if not os.path.exists(path):
