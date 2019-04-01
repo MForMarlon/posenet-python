@@ -33,12 +33,11 @@ def main():
         start = time.time()
 
         while True:
-            return_value, frame = video.read()
-            if not return_value:
-                break
+            input_image, draw_image, output_scale = posenet.read_cap(
+                video, scale_factor=args.scale_factor, output_stride=output_stride)
 
-            input_image, draw_image, output_scale = posenet.read_imgfile(
-                frame, scale_factor=args.scale_factor, output_stride=output_stride)
+            if input_image is False:
+                break
 
             heatmaps_result, offsets_result, displacement_fwd_result, displacement_bwd_result = sess.run(
                 model_outputs,
@@ -64,7 +63,7 @@ def main():
 
             if not args.notxt:
                 print()
-                print("Results for image: %s" % f)
+                print("Results for image: %i" % i)
                 for pi in range(len(pose_scores)):
                     if pose_scores[pi] == 0.:
                         break
